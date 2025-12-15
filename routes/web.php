@@ -7,6 +7,7 @@ use App\Http\Controllers\QuestionController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\MahasiswaController;
 use App\Http\Controllers\PelangganController;
+use App\Http\Controllers\UserController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -40,4 +41,4 @@ Route::resource('pelanggan', PelangganController::class);
 Route::post('/pelanggan', [PelangganController::class, 'store'])
     ->name('pelanggan.store');
 
-
+Route::resource('user', UserController::class);
