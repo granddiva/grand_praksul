@@ -1,10 +1,11 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\MahasiswaController;
-use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\QuestionController;
+use App\Http\Controllers\MahasiswaController;
+use App\Http\Controllers\DashboardController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -26,6 +27,9 @@ Route::get('/login', [AuthController::class, 'form']);
 Route::post('/login', [AuthController::class, 'login']);
 Route::post('/login-ajax', [AuthController::class, 'loginAjax']);
 
-/* ✅ ROUTE FORM PERTANYAAN (INI PENTING) */
+/* ROUTE FORM PERTANYAAN */
 Route::post('/question', [QuestionController::class, 'store'])
     ->name('question.store');
+
+/* ROUTE DASHBOARD */
+Route::get('/dashboard', [DashboardController::class, 'index']);
