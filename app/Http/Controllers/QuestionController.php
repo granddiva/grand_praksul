@@ -8,12 +8,14 @@ class QuestionController extends Controller
 {
     public function store(Request $request)
     {
-        // Ambil data dari form
-        $nama = $request->nama;
-        $email = $request->email;
-        $pertanyaan = $request->pertanyaan;
+        // ✅ VALIDASI DATA
+        $request->validate([
+            'nama'       => 'required|max:10',
+            'email'      => ['required', 'email'],
+            'pertanyaan' => 'required|min:8|max:300',
+        ]);
 
-        // Untuk tugas: tampilkan hasil (tidak error)
+        // (sementara untuk tugas, belum simpan DB)
         return back()->with('success', 'Pertanyaan berhasil dikirim');
     }
 }

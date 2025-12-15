@@ -15,6 +15,17 @@
         <div class="card-body">
             <h5 class="card-title mb-4">Form Pertanyaan</h5>
 
+            {{-- ALERT ERROR VALIDASI (DI ATAS FORM) --}}
+            @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul class="mb-0">
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
+
             {{-- ALERT SUKSES --}}
             @if (session('success'))
                 <div class="alert alert-success">
